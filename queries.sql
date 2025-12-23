@@ -1,4 +1,4 @@
-
+-- Query 1
 SELECT
     b.booking_id,
     u.name AS customer_name,
@@ -9,7 +9,7 @@ SELECT
 FROM bookings b
 INNER JOIN users u ON b.user_id = u.user_id
 INNER JOIN vehicles v ON b.vehicle_id = v.vehicle_id;
-
+-- Query 2
 SELECT *
 FROM vehicles v
 WHERE NOT EXISTS (
@@ -17,13 +17,13 @@ WHERE NOT EXISTS (
     FROM bookings b
     WHERE b.vehicle_id = v.vehicle_id
 );
-
+-- Query 3
 SELECT *
 FROM vehicles
 WHERE type = 'car'
 AND status = 'available';
 
-
+-- Query 4
 SELECT
     v.name AS vehicle_name,
     COUNT(b.booking_id) AS total_bookings
