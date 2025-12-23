@@ -1,70 +1,102 @@
 # 🚗 Vehicle Rental System – Database Design & SQL Queries
 
-## 📌 Project Overview
-This project demonstrates the design and implementation of a **Vehicle Rental System** database.  
-The assignment focuses on **ERD design**, **relational database concepts**, and **SQL querying techniques** such as JOIN, EXISTS, WHERE, GROUP BY, and HAVING.
+## 🧩 Database Design Summary
 
-The system manages:
-- Users (Admin and Customer)
-- Vehicles
-- Bookings
-
----
-
-## 🧩 Database Design
-The database consists of three core tables:
+The database consists of **three main tables**:
 
 ### 1. Users
-Stores user information such as name, email, phone number, and role (Admin or Customer).  
-Each user can make multiple bookings.
+Stores information about system users.
+- Roles: Admin, Customer
+- Each user has a unique email
+- One user can make multiple bookings
 
 ### 2. Vehicles
-Stores vehicle details including name, type (car/bike/truck), model, registration number, rental price, and availability status.
+Stores information about rental vehicles.
+- Types: car, bike, truck
+- Each vehicle has a unique registration number
+- Vehicles have availability status
 
 ### 3. Bookings
-Stores rental booking information including booking dates, booking status, total cost, and references to users and vehicles.
+Stores booking details.
+- Each booking is linked to one user and one vehicle
+- Includes rental period, booking status, and total cost
 
 ### 🔗 Relationships
 - One User → Many Bookings
 - One Vehicle → Many Bookings
-- Each booking is associated with exactly one user and one vehicle
+- Each Booking is associated with exactly one User and one Vehicle
 
 ---
 
 ## 📊 SQL Queries Explanation
 
-All SQL queries are provided in the **queries.sql** file.
-
-### Query 1: INNER JOIN
-Retrieves booking details along with customer name and vehicle name by joining Users, Vehicles, and Bookings tables.
-
-### Query 2: NOT EXISTS
-Finds vehicles that have never been booked using a NOT EXISTS subquery.
-
-### Query 3: WHERE
-Retrieves all available vehicles of a specific type (e.g., cars).
-
-### Query 4: GROUP BY & HAVING
-Counts total bookings per vehicle and displays only those vehicles that have more than two bookings.
+All SQL queries are available in the `queries.sql` file.  
+Below is an explanation of each query and the SQL concepts used.
 
 ---
 
-## 🛠 Tools & Technologies Used
-- MySQL (SQL Queries)
-- Lucidchart (ERD Design)
-- GitHub (Version Control & Submission)
+### 🔹 Query 1: Retrieve Booking Details Using INNER JOIN
+
+**Purpose:**  
+Retrieve booking information along with customer name and vehicle name.
+
+**Explanation:**  
+- The `bookings` table is joined with the `users` table using `user_id`.
+- The `bookings` table is also joined with the `vehicles` table using `vehicle_id`.
+- `INNER JOIN` ensures only valid bookings with existing users and vehicles are returned.
+
+**SQL Concepts Used:**  
+- INNER JOIN  
+- Table relationships  
+- Column aliasing  
 
 ---
 
-## 📎 Submission Links
-- **GitHub Repository:** _[Add your GitHub repo link here]_
-- **ERD Link:** _[Add your Lucidchart public ERD link here]_
-- **Viva Video Link:** _[Add your YouTube or Google Drive link here]_
+### 🔹 Query 2: Find Vehicles That Have Never Been Booked (NOT EXISTS)
+
+**Purpose:**  
+Identify vehicles that have never been booked.
+
+**Explanation:**  
+- The main query selects all vehicles.
+- A subquery checks whether the vehicle exists in the `bookings` table.
+- `NOT EXISTS` returns vehicles with no matching booking records.
+
+**SQL Concepts Used:**  
+- Subquery  
+- NOT EXISTS  
 
 ---
 
-## 🎯 Learning Outcomes
-- Understanding relational database design
-- Applying primary key and foreign key constraints
-- Writing optimized SQL queries
-- Explaining database concepts clearly in viva
+### 🔹 Query 3: Retrieve Available Vehicles of a Specific Type (WHERE)
+
+**Purpose:**  
+Retrieve all vehicles that are available and belong to a specific type (e.g., cars).
+
+**Explanation:**  
+- The `WHERE` clause filters vehicles by type.
+- It also filters vehicles based on availability status.
+
+**SQL Concepts Used:**  
+- SELECT  
+- WHERE  
+- Conditional filtering  
+
+---
+
+### 🔹 Query 4: Find Vehicles with More Than Two Bookings (GROUP BY & HAVING)
+
+**Purpose:**  
+Find vehicles that have been booked more than two times.
+
+**Explanation:**  
+- The `vehicles` and `bookings` tables are joined.
+- `GROUP BY` groups booking records by vehicle.
+- `COUNT()` calculates the number of bookings per vehicle.
+- `HAVING` filters vehicles with more than two bookings.
+
+**SQL Concepts Used:**  
+- GROUP BY  
+- HAVING  
+- Aggregate functions (COUNT)  
+- JOIN  
