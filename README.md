@@ -1,6 +1,6 @@
-# 🚗 Vehicle Rental System – Database Design & SQL Queries
+#  Vehicle Rental System – Database Design & SQL Queries
 
-## 🧩 Database Design Summary
+##  Database Design Summary
 
 The database consists of **three main tables**:
 
@@ -21,21 +21,21 @@ Stores booking details.
 - Each booking is linked to one user and one vehicle
 - Includes rental period, booking status, and total cost
 
-### 🔗 Relationships
+###  Relationships
 - One User → Many Bookings
 - One Vehicle → Many Bookings
 - Each Booking is associated with exactly one User and one Vehicle
 
 ---
 
-## 📊 SQL Queries Explanation
+##  SQL Queries Explanation
 
 All SQL queries are available in the `queries.sql` file.  
 Below is an explanation of each query and the SQL concepts used.
 
 ---
 
-### 🔹 Query 1: Retrieve Booking Details Using INNER JOIN
+###  Query 1: Retrieve Booking Details Using INNER JOIN
 
 **Purpose:**  
 Retrieve booking information along with customer name and vehicle name.
@@ -52,7 +52,7 @@ Retrieve booking information along with customer name and vehicle name.
 
 ---
 
-### 🔹 Query 2: Find Vehicles That Have Never Been Booked (NOT EXISTS)
+###  Query 2: Find Vehicles That Have Never Been Booked (NOT EXISTS)
 
 **Purpose:**  
 Identify vehicles that have never been booked.
@@ -68,7 +68,7 @@ Identify vehicles that have never been booked.
 
 ---
 
-### 🔹 Query 3: Retrieve Available Vehicles of a Specific Type (WHERE)
+###  Query 3: Retrieve Available Vehicles of a Specific Type (WHERE)
 
 **Purpose:**  
 Retrieve all vehicles that are available and belong to a specific type (e.g., cars).
@@ -84,7 +84,7 @@ Retrieve all vehicles that are available and belong to a specific type (e.g., ca
 
 ---
 
-### 🔹 Query 4: Find Vehicles with More Than Two Bookings (GROUP BY & HAVING)
+###  Query 4: Find Vehicles with More Than Two Bookings (GROUP BY & HAVING)
 
 **Purpose:**  
 Find vehicles that have been booked more than two times.
